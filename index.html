@@ -54,14 +54,14 @@
              }
         </style>
 
-		<!-- CURRENTLY NOT IN USE -  Global site tag (gtag.js) - Google Analytics (for seeing how many people view the website) -->
+		<!-- Global site tag (gtag.js) - Google Analytics (for seeing how many people view the website) -->
 		<!--script async src="https://www.googletagmanager.com/gtag/"></script>
 		<script>
 			window.dataLayer = window.dataLayer || [];
 			function gtag(){dataLayer.push(arguments);}
 			gtag('js', new Date());
 
-			gtag('config', 'G');
+			gtag('config', 'G-');
 		</script>
 
 		<script>
@@ -69,13 +69,20 @@
 				window.location.href = "https://www.github.com/a112r/";
 			}
 		</script-->
+		<!--Microsoft clarity for site tracking instead of google analytics above-->
+		<script type="text/javascript">
+			(function(c,l,a,r,i,t,y){
+				c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+				t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+				y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+			})(window, document, "clarity", "script", "mbh3cv26oi");
+		</script>
 	</head>
 
 	<body>
 
         <div class="popup" id="popup">
-            <p>Hello! Welcome to my website! </p>
-	    <p>Note: this website is a work in progress.</p>
+            <p>Hello! Welcome to my website!</p>
           </div>
           
           <script>
