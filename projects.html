@@ -15,7 +15,7 @@
 				width: 500px;
 				height: auto;
 			}
-			.jumbotron { /* Also like #16298a */
+			.jumbotron { 
 				background-color: #05b4ff!important;
 			}
 			.icon {
@@ -25,6 +25,7 @@
 		</style>
 
 <style>
+
 	/* Default background color */
 	body {
 	  background-color: #ffffff; /* Light mode background color */
@@ -38,6 +39,37 @@
 		color: #ffffff; /* Dark mode text color */
 	  }
 	}
+
+
+	/* Add a card effect for articles */
+.card {
+   background-color: white;
+   padding: 20px;
+   margin-top: 20px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 800px) {
+  .leftcolumn, .rightcolumn {   
+    width: 100%;
+    padding: 0;
+  }
+}
+
+/* place holder image */
+.phimg {
+  background-color: #aaa;
+  width: 100%;
+  padding: 20px;
+}
+
   </style>
 
 		<!-- Global site tag (gtag.js) - Google Analytics (for seeing how many people view the website) -->
@@ -86,6 +118,21 @@
 					<a href="projects/projectplaceholder4.html" class="list-group-item list-group-item-action">projectplaceholder4</a>
 					<a href="projects/projectplaceholder5.html" class="list-group-item list-group-item-action">projectplaceholder5</a>
 				</div>
+				<br>
+				<div class="card">
+					<h2>TITLE HEADING</h2>
+					<h5>Title description, </h5>
+					<div class="phimg" style="height:200px;">Image</div>
+					<p>Some text..</p>
+					<p>lol</p>
+				  </div>
+				  <div class="card">
+					<h2>TITLE HEADING</h2>
+					<h5>Title description</h5>
+					<div class="phimg" style="height:200px;">Image</div>
+					<p>Some text..</p>
+					<p>lol</p>
+				  </div>
 			</div>
 		</main>
 		<footer>
