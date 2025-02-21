@@ -68,23 +68,28 @@
 
 	<body>
 
-        <div class="popup" id="popup">
-            <p>Hello! Welcome to my website! <br> Note: This website is currently a work in progress </p>
-          </div>
-          
-          <script>
-            // Function to show the popup
-            function showPopup() {
-              document.getElementById("popup").style.display = "block";
-              // Hide the popup after 10 seconds
-              setTimeout(function() {
-                document.getElementById("popup").style.display = "none";
-              }, 6000); // 6 seconds
-            }
-          
-            // Call the function when the page loads
-            window.onload = showPopup;
-          </script>
+      <!-- The popup -->
+		<div class="popup" id="popup">
+			<p>Hello! Welcome to my website! <br> Note: This website is currently a work in progress </p>
+		</div>
+
+		<script>
+			// Check if the popup has been shown before in the current session
+			if (!sessionStorage.getItem("popupShown")) {
+				// If not, show the popup
+				function showPopup() {
+					document.getElementById("popup").style.display = "block";
+					// Hide the popup after 6 seconds
+					setTimeout(function() {
+						document.getElementById("popup").style.display = "none";
+					}, 6000); // 6 seconds
+				}
+				window.onload = showPopup;
+
+				// Store in sessionStorage that the popup has been shown
+				sessionStorage.setItem("popupShown", "true");
+			}
+		</script>
 
 		<header>
 			<div class="container">
