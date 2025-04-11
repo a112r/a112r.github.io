@@ -9,6 +9,9 @@
     <!-- Bootstrap core CSS -->
     <link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
+      :root {
+        color-scheme: light dark;
+      }
       .img-fluid {
         width: 100%;
         height: auto;
@@ -31,41 +34,48 @@
         font-weight: bold;
       }
       body {
-        background-color: #ffffff;
-        color: #000000;
+        background-color: var(--bg-color, #ffffff);
+        color: var(--text-color, #000000);
+        transition: background-color 0.3s ease, color 0.3s ease;
       }
-      @media (prefers-color-scheme: dark) {
-        body {
-          background-color: #000000;
-          color: #ffffff;
-        }
-        .card {
-          background-color: #333333;
-          color: #ffffff;
-        }
-        .card h2, .card h5, .card p {
-          color: #ffffff;
-        }
+      .jumbotron {
+        background-color: #05b4ff !important;
+        color: white;
+        padding: 3rem 2rem;
       }
-      @media (prefers-color-scheme: light) {
-        .card {
-          background-color: #ffffff;
-          color: #000000;
-        }
-        .card h2, .card h5, .card p {
-          color: #000000;
-        }
-      }
+
       .card {
         padding: 20px;
         margin-top: 20px;
         border-radius: 10px;
         box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
         transition: transform 0.3s ease, box-shadow 0.3s ease;
+        background-color: var(--card-bg, #ffffff);
+        color: var(--text-color, #000000);
       }
       .card:hover {
         transform: translateY(-5px);
-        box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+      }
+      .icon {
+        width: 16px;
+        height: 16px;
+      }
+      .theme-toggle {
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        z-index: 1000;
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+      }
+      .toast {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 9999;
       }
       .filter-btn-group {
         margin-bottom: 20px;
@@ -84,6 +94,7 @@
         document.getElementById('themeIcon').textContent = darkMode ? '🌙' : '☀️';
         localStorage.setItem('darkMode', darkMode);
       }
+
       function toggleTheme() {
         const current = localStorage.getItem('darkMode') === 'true';
         setTheme(!current);
@@ -122,10 +133,14 @@
 
   <body>
 
-   
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+      <span id="themeIcon">☀️</span>
+    </button>
+ 
+    
     <header>
-      <div class="container">
-        <div class="jumbotron text-white">
+      <div class="container mt-4">
+        <div class="jumbotron text-center">
           <h1 class="text-center"><b>Abhishek Raghuwanshi</b></h1>
         </div>
         <div class="btn-group d-flex" role="group">
