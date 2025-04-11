@@ -75,6 +75,30 @@
       }
     </style>
 
+     <script>
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      function setTheme(darkMode) {
+        document.documentElement.style.setProperty('--bg-color', darkMode ? '#000000' : '#ffffff');
+        document.documentElement.style.setProperty('--text-color', darkMode ? '#ffffff' : '#000000');
+        document.documentElement.style.setProperty('--card-bg', darkMode ? '#1e1e1e' : '#ffffff');
+        document.getElementById('themeIcon').textContent = darkMode ? '🌙' : '☀️';
+        localStorage.setItem('darkMode', darkMode);
+      }
+      function toggleTheme() {
+        const current = localStorage.getItem('darkMode') === 'true';
+        setTheme(!current);
+      }
+      window.onload = () => {
+        const saved = localStorage.getItem('darkMode');
+        const darkMode = saved === null ? prefersDark : saved === 'true';
+        setTheme(darkMode);
+        if (!sessionStorage.getItem("popupShown")) {
+          $(".toast").toast("show");
+          sessionStorage.setItem("popupShown", "true");
+        }
+      };
+    </script>
+
     <script type="text/javascript">
       (function(c,l,a,r,i,t,y){
         c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
