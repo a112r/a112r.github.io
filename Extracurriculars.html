@@ -39,16 +39,12 @@
 		<style>
 			/* Default background color */
 			body {
-			  background-color: #ffffff;
-			  color: #000000;
-			}
+  background-color: var(--bg-color, #ffffff);
+  color: var(--text-color, #000000);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
 			/* Dark mode */
-			@media (prefers-color-scheme: dark) {
-			  body {
-				background-color: #000000;
-				color: #ffffff;
-			  }
-			}
+			
 		</style>
 
 		<script type="text/javascript">
@@ -58,8 +54,41 @@
 				y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
 			})(window, document, "clarity", "script", "mbh3cv26oi");
 		</script>
-	</head>
+	<style>
+  .theme-toggle {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 1000;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+</style>
+<script>
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  function setTheme(darkMode) {
+    document.documentElement.style.setProperty('--bg-color', darkMode ? '#000000' : '#ffffff');
+    document.documentElement.style.setProperty('--text-color', darkMode ? '#ffffff' : '#000000');
+    document.getElementById('themeIcon').textContent = darkMode ? '🌙' : '☀️';
+    localStorage.setItem('darkMode', darkMode);
+  }
+  function toggleTheme() {
+    const current = localStorage.getItem('darkMode') === 'true';
+    setTheme(!current);
+  }
+  window.onload = () => {
+    const saved = localStorage.getItem('darkMode');
+    const darkMode = saved === null ? prefersDark : saved === 'true';
+    setTheme(darkMode);
+  };
+</script>
+</head>
 	<body>
+  <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+    <span id="themeIcon">☀️</span>
+  </button>
 		<header>
 			<div class="container">
 				<div class="jumbotron text-white">
