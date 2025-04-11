@@ -1,131 +1,161 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-		<title>Abhishek Raghuwanshi</title>
+    <title>Abhishek Raghuwanshi</title>
 
-		<!-- Bootstrap core CSS -->
-		<link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet">
-		<style>
-			.img-fluid {
-				width: 500px;
-				height: auto;
-			}
-			.jumbotron { 
-				background-color: #05b4ff!important;
-			}
-			.icon {
-				width: 16px;
-				height: 16px;
-			}
-		</style>
+    <link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+      :root {
+        color-scheme: light dark;
+      }
+      body {
+        background-color: var(--bg-color, #ffffff);
+        color: var(--text-color, #000000);
+        transition: background-color 0.3s ease, color 0.3s ease;
+      }
+      .jumbotron {
+        background-color: #05b4ff !important;
+        color: white;
+        padding: 3rem 2rem;
+      }
+      .card {
+        margin-top: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        background-color: var(--card-bg, #ffffff);
+        color: var(--text-color, #000000);
+      }
+      .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+      }
+      .icon {
+        width: 16px;
+        height: 16px;
+      }
+      .theme-toggle {
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        z-index: 1000;
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+      }
+      .toast {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 9999;
+      }
+    </style>
+    <script>
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      function setTheme(darkMode) {
+        document.documentElement.style.setProperty('--bg-color', darkMode ? '#000000' : '#ffffff');
+        document.documentElement.style.setProperty('--text-color', darkMode ? '#ffffff' : '#000000');
+        document.documentElement.style.setProperty('--card-bg', darkMode ? '#1e1e1e' : '#ffffff');
+        document.getElementById('themeIcon').textContent = darkMode ? '🌙' : '☀️';
+        localStorage.setItem('darkMode', darkMode);
+      }
+      function toggleTheme() {
+        const current = localStorage.getItem('darkMode') === 'true';
+        setTheme(!current);
+      }
+      window.onload = () => {
+        const saved = localStorage.getItem('darkMode');
+        const darkMode = saved === null ? prefersDark : saved === 'true';
+        setTheme(darkMode);
+        if (!sessionStorage.getItem("popupShown")) {
+          $(".toast").toast("show");
+          sessionStorage.setItem("popupShown", "true");
+        }
+      };
+    </script>
+    <script type="text/javascript">
+      (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "mbh3cv26oi");
+    </script>
+  </head>
+  <body>
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+      <span id="themeIcon">☀️</span>
+    </button>
 
-<style>
-	/* Default background color */
-	body {
-	  background-color: #ffffff; /* Light mode background color */
-	  color: #000000; /* Light mode text color */
-	}
-  
+    <div class="toast" id="popup" data-delay="6000">
+      <div class="toast-header">
+        <strong class="mr-auto">Welcome!</strong>
+        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
+      </div>
+      <div class="toast-body">
+        This site is a work in progress — thanks for visiting!
+      </div>
+    </div>
 
-	/* Dark mode */
-	@media (prefers-color-scheme: dark) {
-	  body {
-		background-color: #000000; /* Dark mode background color */
-		color: #ffffff; /* Dark mode text color */
-	  }
-	}
-  </style>
+    <!-- Placeholder Main Content -->
+    <header class="container mt-4">
+      <div class="jumbotron text-center">
+        <h1 class="display-4">Hi, I'm Abhishek Raghuwanshi</h1>
+        <p class="lead">Electrical Engineering @ UBC • Embedded Systems • Silicon Design • Robotics</p>
+      </div>
+      <div class="btn-group d-flex mb-3" role="group">
+        <a href="index.html" class="btn btn-dark w-100">Home page</a>
+        <a href="projects.html" class="btn btn-dark w-100">Projects</a>
+        <a href="Extracurriculars.html" class="btn btn-dark w-100">Extracurriculars</a>
+      </div>
+    </header>
 
-        <style>
-            /* Style for the popup */
-           .popup {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: #ffffff;
-			color: #000000;
-            padding: 20px;
-            border: 2px solid #000000;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-            display: none; /* Initially hidden */
-             }
-        </style>
+    <main class="container">
+      <div class="row">
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">About Me</h5>
+        <p>Hi! I’m a 3rd-year Electrical Engineering student at UBC with a strong focus on Electronics, RTL design, and embedded systems. As Electronics Team Lead at UBC Subbots, I lead the design of custom ESCs, battery systems, and power boards for autonomous underwater vehicles competing in the RoboSub competition. I’ve built embedded C/C++ systems for STM32, Nrf52, ESP32, and ATmega microcontrollers and designed PCBs in Altium integrating sensors over UART, SPI, and I2C.</p>
+        <p>My core interest lies in silicon engineering and digital hardware — particularly RTL design, FPGA prototyping, and ASIC workflows. I’ve worked with SystemVerilog and simulation tools like Modelsim + Quartus, and deepened my fundamentals through UBC’s advanced semiconductor courses.</p>
+        <!--ul>
+          <li>Electronics Team Lead – UBC Subbots</li>
+          <li>VP Student Life – UBC ECESS</li>
+          <li>Facilities Director + Company Relations – UBC EUS</li>
+          <li>Passionate about high-performance hardware and future silicon architecture</li>
+          <li>Also into student leadership, calisthenics, hackathons, guitar & sports</li>
+      </ul-->
+        <a href="https://docs.google.com/viewer?url=https://a112r.github.io/logos/Abhisheks_Resume_Jan25.pdf" class="btn btn-outline-primary">View My Resume</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">About This Site</h5>
+        <p>This site is built with HTML + Bootstrap and hosted using GitHub Pages. It’s responsive, mobile-friendly, and open source. It showcases my projects, extracurriculars, and a bit about me. I’m always iterating and updating things—feel free to check out the code!</p>
+        <a href="https://github.com/a112r/a112r.github.io" class="btn btn-outline-dark">Site GitHub Repo</a>
+      </div>
+    </div>
+  </div>
+</div>
+    </main>
 
-		
-		<!--Microsoft clarity for site tracking below-->
-		<script type="text/javascript">
-			(function(c,l,a,r,i,t,y){
-				c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-				t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-				y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-			})(window, document, "clarity", "script", "mbh3cv26oi");
-		</script>
-	</head>
+    <footer class="container text-left text-muted mt-5">
+      <hr>
+      <p>© Abhishek Raghuwanshi, 2025</p>
+      <p>All images belong to their respective owners.</p>
+      <img src="https://raw.githubusercontent.com/a112r/a112r.github.io/main/logos/github-mark.png" class="icon">&nbsp;&nbsp;<a href="https://github.com/a112r">GitHub</a><br>
+      <img src="https://raw.githubusercontent.com/a112r/a112r.github.io/main/logos/LI-In-Bug.png" class="icon">&nbsp;&nbsp;<a href="https://www.linkedin.com/in/a112r/">LinkedIn</a><br>
+      <img src="https://raw.githubusercontent.com/a112r/a112r.github.io/main/logos/Instagram_Glyph_Gradient.png" class="icon">&nbsp;&nbsp;<a href="https://www.instagram.com/abh1shek.r/">Instagram</a>
+      <p>📧&nbsp;<a href="mailto:abhishek.raghuwanshi@icloud.com">abhishek.raghuwanshi@icloud.com</a></p>
+    </footer>
 
-	<body>
-
-      <!-- The popup -->
-		<div class="popup" id="popup">
-			<p>Hello! Welcome to my website! <br> Note: This website is currently a work in progress </p>
-		</div>
-
-		<script>
-			// Check if the popup has been shown before in the current session
-			if (!sessionStorage.getItem("popupShown")) {
-				// If not, show the popup
-				function showPopup() {
-					document.getElementById("popup").style.display = "block";
-					// Hide the popup after 6 seconds
-					setTimeout(function() {
-						document.getElementById("popup").style.display = "none";
-					}, 6000); // 6 seconds
-				}
-				window.onload = showPopup;
-
-				// Store in sessionStorage that the popup has been shown
-				sessionStorage.setItem("popupShown", "true");
-			}
-		</script>
-
-		<header>
-			<div class="container">
-				<div class="jumbotron text-white"> 
-					<h1 class="text-center"><b>Hi I'm Abhishek Raghuwanshi! </b></h1>	
-				</div>
-				<div class="btn-group d-flex" role="group">
-					<a href="index.html" class="btn btn-dark w-100">Home page</a>	
-					<a href="projects.html" class="btn btn-dark w-100">Projects</a>
-					<a href="Extracurriculars.html" class="btn btn-dark w-100">Extracurriculars</a>
-					
-				</div>
-				<hr>
-			</div>
-		</header>
-		<main>
-			<div class="container text-left">
-				<h3>About me</h3>
-				<p>I am a third-year electrical engineering student at the University of British Columbia. You can view <a href="https://docs.google.com/viewer?url=https://a112r.github.io/logos/Abhisheks_Resume_Jan25.pdf">my resume here</a>. I am also a member and Electrical team lead of UBC Subbots, an engineering design team whose goal is to design and build autonomous underwater vehicles (AUVs) for the annual Robosub competition in California. I am currently serving as the Vice President - Student life on the Electrical and Computer Engineering student society at UBC and treasurer for the UBC Calisthenics club, and also Facilities Director and company relations manager for the Engineering Undergraduate Society of UBC. Outside of school, I have several hobbies, such as working with electronics, programming, participating in triathlons and exploring the outdoors. I have done multiple projects and participated in extracurriculars, some of which can be found on this website.</p>
-				<br>
-				<h3>About the site</h3>
-				<p>This site has been created using HTML with Bootstrap, which makes the website look cleaner than just a simple HTML site (thanks to my friend Callum). Bootstrap also makes it responsive, so it works on a wide variety of devices. The site is hosted with GitHub pages, so you can see the repository for the site on my Github linked below.</p>
-			</div>
-		</main>
-		<footer>
-			<div class="container text-left text-muted">
-				<hr>
-				<p>© Abhishek Raghuwanshi, 2025</p>
-				<p>All images belong to their respective owners.</p>
-
-           <!-- The below used icons are the officially permitted icons with permission of the companies :) -->
-				<img src="https://raw.githubusercontent.com/a112r/a112r.github.io/main/logos/github-mark.png" class="icon">&nbsp;&nbsp;<a href="https://github.com/a112r">GitHub</a><br>
-				<img src="https://raw.githubusercontent.com/a112r/a112r.github.io/main/logos/LI-In-Bug.png" class="icon">&nbsp;&nbsp;<a href="https://www.linkedin.com/in/a112r/">LinkedIn</a><br>
-				<img src="https://raw.githubusercontent.com/a112r/a112r.github.io/main/logos/Instagram_Glyph_Gradient.png" class="icon">&nbsp;&nbsp;<a href="https://www.instagram.com/abh1shek.r/">Instagram</a>
-				<p>📧&nbsp;<a href=mailto:“abhishek.raghuwanshi@icloud.com”>abhishek.raghuwanshi@icloud.com</a></p>
-			</div>
-		</footer>
-	</body>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  </body>
 </html>
