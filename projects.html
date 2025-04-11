@@ -1,151 +1,203 @@
-
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-		<title>Abhishek Raghuwanshi | Projects</title>
+    <title>Abhishek Raghuwanshi | Projects</title>
 
-		
-		<!-- Bootstrap core CSS -->
-		<link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet">
-		<style>
-			.img-fluid {
-				width: 500px;
-				height: auto;
-			}
-			.jumbotron { 
-				background-color: #05b4ff!important;
-			}
-			.icon {
-				width: 16px;
-				height: 16px;
-			}
-		</style>
+    <!-- Bootstrap core CSS -->
+    <link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+      .img-fluid {
+        width: 100%;
+        height: auto;
+      }
+      .jumbotron {
+        background-color: #05b4ff!important;
+      }
+      .icon {
+        width: 16px;
+        height: 16px;
+      }
+      .phimg {
+        background-color: #aaa;
+        width: 100%;
+        height: 200px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: bold;
+      }
+      body {
+        background-color: #ffffff;
+        color: #000000;
+      }
+      @media (prefers-color-scheme: dark) {
+        body {
+          background-color: #000000;
+          color: #ffffff;
+        }
+        .card {
+          background-color: #333333;
+          color: #ffffff;
+        }
+        .card h2, .card h5, .card p {
+          color: #ffffff;
+        }
+      }
+      @media (prefers-color-scheme: light) {
+        .card {
+          background-color: #ffffff;
+          color: #000000;
+        }
+        .card h2, .card h5, .card p {
+          color: #000000;
+        }
+      }
+      .card {
+        padding: 20px;
+        margin-top: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
+      }
+      .filter-btn-group {
+        margin-bottom: 20px;
+      }
+      .d-none {
+        display: none !important;
+      }
+    </style>
 
-<style>
+    <script type="text/javascript">
+      (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "mbh3cv26oi");
 
-	/* Default background color */
-body {
-  background-color: #ffffff; /* Light mode background color */
-  color: #000000; /* Light mode text color */
-}
+      function filterProjects(category) {
+        const cards = document.querySelectorAll('.card');
+        cards.forEach(card => {
+          const tag = card.getAttribute('data-category');
+          if (category === 'all' || tag.includes(category)) {
+            card.parentElement.classList.remove('d-none');
+          } else {
+            card.parentElement.classList.add('d-none');
+          }
+        });
+      }
+    </script>
+  </head>
 
-/* Dark mode */
-@media (prefers-color-scheme: dark) {
-  body {
-    background-color: #000000; /* Dark mode background color */
-    color: #ffffff; /* Dark mode text color */
-  }
+  <body>
+    <header>
+      <div class="container">
+        <div class="jumbotron text-white">
+          <h1 class="text-center"><b>Abhishek Raghuwanshi</b></h1>
+        </div>
+        <div class="btn-group d-flex" role="group">
+          <a href="index.html" class="btn btn-dark w-100">Home</a>
+          <a href="projects.html" class="btn btn-dark w-100">Projects</a>
+          <a href="Extracurriculars.html" class="btn btn-dark w-100">Extracurriculars</a>
+        </div>
+        <hr>
+      </div>
+    </header>
 
-  /* Card styling for dark mode */
-  .card {
-    background-color: #333333; /* Dark mode background for cards */
-    color: #ffffff; /* Dark mode text color */
-  }
+    <main>
+      <div class="container text-left">
+        <h3>Projects</h3>
+        <p>Below are some of my featured projects. Feel free to check out my <a href="https://github.com/a112r" target="_blank">GitHub</a> for more!</p>
 
-  .card h2, .card h5, .card p {
-    color: #ffffff; /* Ensure text inside card is white in dark mode */
-  }
-}
+        <div class="filter-btn-group text-center">
+          <button class="btn btn-outline-primary" onclick="filterProjects('all')">All</button>
+          <button class="btn btn-outline-secondary" onclick="filterProjects('hardware')">Hardware</button>
+          <button class="btn btn-outline-success" onclick="filterProjects('software')">Software</button>
+          <button class="btn btn-outline-info" onclick="filterProjects('web')">Web</button>
+        </div>
 
-/* Light mode styling for cards */
-@media (prefers-color-scheme: light) {
-  .card {
-    background-color: #ffffff; /* Light mode background for cards */
-    color: #000000; /* Light mode text color */
-  }
+        <div class="row">
+          <div class="col-md-6">
+            <div class="card" data-category="hardware">
+              <div class="phimg">Image</div>
+              <div class="card-body">
+                <h5 class="card-title">RISC Machine</h5>
+                <p class="card-text">Designed a 32-bit CPU that decodes ARM instructions on an Altera FPGA using SystemVerilog and ModelSim testbenches.</p>
+                <p><b>Tech:</b> SystemVerilog, ARM Assembly, Quartus, ModelSim</p>
+                <a href="https://github.com/a112r/RISC-Machine" class="btn btn-primary" target="_blank">View on GitHub</a>
+              </div>
+            </div>
+          </div>
 
-  .card h2, .card h5, .card p {
-    color: #000000; /* Ensure text inside card is black in light mode */
-  }
-}
+          <div class="col-md-6">
+            <div class="card" data-category="hardware">
+              <div class="phimg">Image</div>
+              <div class="card-body">
+                <h5 class="card-title">Metal Detecting RC Robot</h5>
+                <p class="card-text">Built a robot using PIC32 and STM32 to detect magnetic flux, transmit readings via UART, and visualize metal data.</p>
+                <p><b>Tech:</b> PIC32, ATmega, UART, Python</p>
+                <a href="https://github.com/a112r/Metal-detecting-RC-robot" class="btn btn-primary" target="_blank">View on GitHub</a>
+              </div>
+            </div>
+          </div>
 
-/* Add a card effect for articles */
-.card {
-  padding: 20px;
-  margin-top: 20px;
-  border-radius: 5px; /* Optional: rounded corners for card */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: shadow effect for cards */
-  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
-}
+          <div class="col-md-6">
+            <div class="card" data-category="hardware">
+              <div class="phimg">Image</div>
+              <div class="card-body">
+                <h5 class="card-title">Reflow Oven Controller</h5>
+                <p class="card-text">Implemented a reflow oven system using an 8051-based microcontroller to manage temperature profiles with assembly logic and Python logging.</p>
+                <p><b>Tech:</b> Nuvoton, 8051 Assembly, Python</p>
+                <a href="https://github.com/a112r/Reflow-Oven-Controller-project" class="btn btn-primary" target="_blank">View on GitHub</a>
+              </div>
+            </div>
+          </div>
 
-/* Place holder image */
-.phimg {
-  background-color: #aaa;
-  width: 100%;
-  padding: 20px;
-}
+          <div class="col-md-6">
+            <div class="card" data-category="hardware software web">
+              <div class="phimg">Image</div>
+              <div class="card-body">
+                <h5 class="card-title">BLE Bot Controlled by Web</h5>
+                <p class="card-text">Built a self-balancing robot using a custom motor driver and BLE-based control over a locally hosted webserver interface.</p>
+                <p><b>Tech:</b> ESP32, Nrf52840, Flask, BLEak, Node.js</p>
+                <a href="https://github.com/a112r/web-controlled-ble-bot-js" class="btn btn-primary" target="_blank">View on GitHub</a>
+              </div>
+            </div>
+          </div>
 
-  </style>
+          <div class="col-md-6">
+            <div class="card" data-category="web">
+              <div class="phimg">Image</div>
+              <div class="card-body">
+                <h5 class="card-title">This Website</h5>
+                <p class="card-text">Personal portfolio website built with HTML, CSS, and JavaScript to showcase my work and experiences.</p>
+                <p><b>Tech:</b> HTML, CSS, JavaScript</p>
+                <a href="https://github.com/a112r/a112r.github.io" class="btn btn-primary" target="_blank">View on GitHub</a>
+              </div>
+            </div>
+          </div>
 
-		
-		<script type="text/javascript">
-			(function(c,l,a,r,i,t,y){
-				c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-				t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-				y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-			})(window, document, "clarity", "script", "mbh3cv26oi");
-		</script>
-	</head>
+        </div>
+      </div>
+    </main>
 
-	<body>
-		<header>
-			<div class="container">
-				<div class="jumbotron text-white"> <!-- Don't know if these colours will stay the same -->
-					<h1 class="text-center"><b>Abhishek Raghuwanshi</b></h1>	
-				</div>
-				<div class="btn-group d-flex" role="group">
-					<a href="index.html" class="btn btn-dark w-100">Home</a>	
-					<a href="projects.html" class="btn btn-dark w-100">Projects</a>
-					<a href="Extracurriculars.html" class="btn btn-dark w-100">Extracurriculars</a>
-					
-				</div>
-				<hr>
-			</div>
-		</header>
-		<main>
-			<div class="container text-left">
-				<h3>Projects</h3>
-				<p>These are the projects that I have done and wish to showcase.(Will add more projects when I next have the chance, but feel free to check out my Github in the mean time and reach out to me!)</p>
-				<br>
-				<div class="list-group">
-					<a href="https://github.com/a112r/RISC-Machine" class="list-group-item list-group-item-action">RISC Machine</a>
-					<a href="https://github.com/a112r/Metal-detecting-RC-robot" class="list-group-item list-group-item-action">Metal Detecting RC robot</a>
-					<a href="https://github.com/a112r/Reflow-Oven-Controller-project" class="list-group-item list-group-item-action">Reflow Oven Controller</a>
-					<a href="https://github.com/a112r/a112r.github.io" class="list-group-item list-group-item-action">This website</a>
-					<a href="https://github.com/a112r/web-controlled-ble-bot-js" class="list-group-item list-group-item-action">Website (though locally hosted webserver) controlled ble bot</a>
-				</div>
-				<br>
-				<div class="card">
-					<h2>Trying better project page layout</h2>
-					<h5>possible description, </h5>
-					<div class="phimg" style="height:200px;">Image</div>
-					<p>Some text..</p>
-					<p>text lol</p>
-				  </div>
-				  <!--<div class="card">
-					<h2>TITLE HEADING</h2>
-					<h5>Title description</h5>
-					<div class="phimg" style="height:200px;">Image</div>
-					<p>Some text..</p>
-					<p>lol</p>
-				  </div> -->
-			</div>
-		</main>
-		<footer>
-			<div class="container text-left text-muted">
-				<hr>
-				<p>© Abhishek Raghuwanshi, 2025</p>
-				<p>All images belong to their respective owners.</p>
-
-           <!-- The below used icons are the officially permitted icons with permission of the companies :) -->
-				<img src="https://raw.githubusercontent.com/a112r/a112r.github.io/main/logos/github-mark.png" class="icon">&nbsp;&nbsp;<a href="https://github.com/a112r">GitHub</a><br>
-				<img src="https://raw.githubusercontent.com/a112r/a112r.github.io/main/logos/LI-In-Bug.png" class="icon">&nbsp;&nbsp;<a href="https://www.linkedin.com/in/a112r/">LinkedIn</a><br>
-				<img src="https://raw.githubusercontent.com/a112r/a112r.github.io/main/logos/Instagram_Glyph_Gradient.png" class="icon">&nbsp;&nbsp;<a href="https://www.instagram.com/abh1shek.r/">Instagram</a>
-				<p>📧&nbsp;<a href=mailto:“abhishek.raghuwanshi@icloud.com”>abhishek.raghuwanshi@icloud.com</a></p>
-			</div>
-		</footer>
-	</body>
+    <footer>
+      <div class="container text-left text-muted">
+        <hr>
+        <p>© Abhishek Raghuwanshi, 2025</p>
+        <p>All images belong to their respective owners.</p>
+        <img src="https://raw.githubusercontent.com/a112r/a112r.github.io/main/logos/github-mark.png" class="icon">&nbsp;&nbsp;<a href="https://github.com/a112r">GitHub</a><br>
+        <img src="https://raw.githubusercontent.com/a112r/a112r.github.io/main/logos/LI-In-Bug.png" class="icon">&nbsp;&nbsp;<a href="https://www.linkedin.com/in/a112r/">LinkedIn</a><br>
+        <img src="https://raw.githubusercontent.com/a112r/a112r.github.io/main/logos/Instagram_Glyph_Gradient.png" class="icon">&nbsp;&nbsp;<a href="https://www.instagram.com/abh1shek.r/">Instagram</a>
+        <p>📧&nbsp;<a href=mailto:"abhishek.raghuwanshi@icloud.com">abhishek.raghuwanshi@icloud.com</a></p>
+      </div>
+    </footer>
+  </body>
 </html>
