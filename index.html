@@ -72,10 +72,9 @@
         const saved = localStorage.getItem('darkMode');
         const darkMode = saved === null ? prefersDark : saved === 'true';
         setTheme(darkMode);
-        if (!sessionStorage.getItem("popupShown")) {
-          $(".toast").toast("show");
-          sessionStorage.setItem("popupShown", "true");
-        }
+        //if (!sessionStorage.getItem("popupShown")) {
+         // $(".toast").toast("show");
+         // sessionStorage.setItem("popupShown", "true");}
       };
     </script>
     <script type="text/javascript">
@@ -91,7 +90,32 @@
       <span id="themeIcon">☀️</span>
     </button>
 
-    <div class="toast" id="popup" data-delay="6000">
+   <!-- Your toast -->
+    <div
+      class="toast"
+      id="popup"
+      role="alert"
+      aria-live="assertive"
+      aria-atomic="true"
+      data-delay="6000"
+    >
+      <div class="toast-header">
+        <strong class="mr-auto">Welcome!</strong>
+        <button
+          type="button"
+          class="ml-2 mb-1 close"
+          data-dismiss="toast"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="toast-body">
+        This site is a work in progress — thanks for visiting!
+      </div>
+    </div>
+
+    <!--div class="toast" id="popup" data-delay="6000">
       <div class="toast-header">
         <strong class="mr-auto">Welcome!</strong>
         <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
@@ -99,7 +123,7 @@
       <div class="toast-body">
         This site is a work in progress — thanks for visiting!
       </div>
-    </div>
+  </div-->
 
     <!-- Placeholder Main Content -->
     <header class="container mt-4">
@@ -160,5 +184,22 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<!-- Toast init + session-only logic -->
+    <script>
+      $(function(){
+        // show only once per session
+        if (!sessionStorage.getItem("popupShown")) {
+          $('#popup')
+            .toast({ delay: 6000 })
+            .toast('show');
+          sessionStorage.setItem("popupShown", "true");
+        }
+        // immediate hide on “×”
+        $('#popup .close').on('click', function(){
+          $('#popup').toast('hide');
+        });
+      });
+    </script>
+
   </body>
 </html>
