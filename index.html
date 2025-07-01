@@ -181,11 +181,34 @@
       <p>📧&nbsp;<a href="mailto:abhishek.raghuwanshi@icloud.com">abhishek.raghuwanshi@icloud.com</a></p>
     </footer>
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+   <!--script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script-->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<!-- Toast init + session-only logic -->
+
+<!-- Toast init + session logic + cleanup -->
     <script>
+      $(function(){
+        if (!sessionStorage.getItem("popupShown")) {
+          $('#popup')
+            .toast({ delay: 6000 })
+            .toast('show');
+          sessionStorage.setItem("popupShown", "true");
+        }
+
+        // hide when “×” is clicked
+        $('#popup .close').on('click', function(){
+          $('#popup').toast('hide');
+        });
+
+        // once fully hidden, remove it from the DOM
+        $('#popup').on('hidden.bs.toast', function(){
+          $(this).remove();
+        });
+      });
+    </script>
+<!-- Toast init + session-only logic -->
+    <!--script>
       $(function(){
         // show only once per session
         if (!sessionStorage.getItem("popupShown")) {
@@ -199,7 +222,7 @@
           $('#popup').toast('hide');
         });
       });
-    </script>
+  </script-->
 
   </body>
 </html>
